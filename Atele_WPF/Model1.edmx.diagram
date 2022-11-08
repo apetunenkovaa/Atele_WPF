@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c565bab29c344fd909f5a067b08f077" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Accessories" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Basic_material" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Education" Width="1.5" PointX="1.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="1.5" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Measurements" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Order_basic_material" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Order_measurements" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Passport" Width="1.5" PointX="1.5" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Post" Width="1.5" PointX="1.5" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Qualification" Width="1.5" PointX="1.5" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="1.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sotrudnic" Width="1.5" PointX="0.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Work" Width="1.5" PointX="0.75" PointY="41.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Order_Accessories" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_Basic_material" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_basic_material_Basic_material" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Client_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sotrudnic_Education" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sotrudnic_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_Measurements" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_measurements_Measurements" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_basic_material_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_measurements_Order_measurements" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_Work" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sotrudnic_Passport" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sotrudnic_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sotrudnic_Qualification" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

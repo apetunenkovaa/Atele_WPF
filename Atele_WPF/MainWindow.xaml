@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:Atele_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#a3cef1">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            
+        </Grid.ColumnDefinitions>
+        
+        <Image Height="100" Width="120" Source="Res/logo.png" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Style="{StaticResource tb}" Grid.Row="0" Grid.Column="1" Margin="10" FontSize="36" HorizontalAlignment="Center">Ателье</TextBlock>
+        <StackPanel HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" >
+            <Button Template="{StaticResource btn_Auto}" Name="bt_Auto" Click="bt_Auto_Click">Авторизация</Button>
+            <Button Template="{StaticResource btn_Reg}" Name="bt_Reg" Click="bt_Reg_Click">Регистрация</Button>
+        </StackPanel>
+       
+        
+        <Frame Name="fr_Main" Grid.Row="1" Grid.Column="3" NavigationUIVisibility="Hidden">
+
+        </Frame>
     </Grid>
 </Window>

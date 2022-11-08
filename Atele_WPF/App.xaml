@@ -4,6 +4,77 @@
              xmlns:local="clr-namespace:Atele_WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="tb" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+        </Style>
+
+        <ControlTemplate TargetType="Button" x:Key="btn_Auto">
+            <Border Width="160" Height="40" 
+                    Background="White"                   
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Margin="0,10,10,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Century Gothic"
+                   Foreground="Black"
+                    />
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="btn_Reg">
+            <Border Width="160" Height="40" 
+                   Background="White"                
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Margin="0,10,10,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Century Gothic"
+                   Foreground="Black"
+                    />
+            </Border>
+        </ControlTemplate>
+
+        <Style x:Key="gropdox" TargetType="GroupBox">
+            <Setter Property="Width" Value="500"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0,5,0,20"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+        </Style>
+
+        <ControlTemplate TargetType="Button" x:Key="btn">
+            <Border Width="55" Height="50" 
+                    Background="White"                   
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Margin="150,0,10,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Century Gothic"
+                   Foreground="Black"
+                    />
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>
+
+    

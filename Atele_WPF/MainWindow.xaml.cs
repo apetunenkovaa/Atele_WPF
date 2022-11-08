@@ -23,6 +23,21 @@ namespace Atele_WPF
         public MainWindow()
         {
             InitializeComponent();
+            DataBase.tBE = new Entities();
+            FrameClass.MainFrame = fr_Main;
+            FrameClass.MainFrame.Navigate(new MainPage());
+
+        }
+
+        private void bt_Auto_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Avtorz());
+        }
+
+        private void bt_Reg_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new RegPage());
         }
     }
 }
+
