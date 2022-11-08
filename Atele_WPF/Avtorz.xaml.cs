@@ -28,7 +28,29 @@ namespace Atele_WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new MainPage());
+            int p = pb_Password.Password.GetHashCode();
+
+            Client autoUser = DataBase.tBE.Client.FirstOrDefault(x => x.Login == tb_Login.Text && x.Password == p);
+
+            if (autoUser == null)  
+            {
+                MessageBox.Show("Пользователя не существует");
+            }
+            else
+            {
+                switch (autoUser.ID_Role)  
+                {
+                    case 1:  
+                        FrameClass.MainFrame.Navigate(new AdminPage()); 
+                        break;
+                    case 2:  
+                        MessageBox.Show("Привет, пользователь");
+                        break;
+                    default:
+                        MessageBox.Show("Пока");
+                        break;
+                }
+            }
         }
     }
 }

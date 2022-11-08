@@ -9,36 +9,42 @@
       Title="RegPage">
 
     <Grid>
-        <StackPanel>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите фамилию">
-                <TextBox Name="tbx_Surname"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите имя">
-                <TextBox Name="tbx_Firstname"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите отчество">
-                <TextBox Name="tbx_Patronymic"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите адрес">
-                <TextBox Name="tbx_Adress"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите мобильный телефон">
-                <TextBox Name="tbx_Mobile_phone"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите e-mail">
-                <TextBox Name="tbx_Email"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите логин">
-                <TextBox Name="tbx_Login"></TextBox>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Введите пароль">
-                <PasswordBox Name="pb_Password"/>
-            </GroupBox>
-            <GroupBox Style="{StaticResource gropdox}" Header="Выберите роль">
-                <ComboBox Name="cb_Role"/>
-            </GroupBox>
-            <Button Name="bt_Registation" Click="bt_Registation_Click">Регистрация</Button>
-        </StackPanel>
-        
+        <ScrollViewer>
+            <StackPanel>
+                <Grid>
+                <TextBlock Style="{StaticResource tb}" HorizontalAlignment="Left">Регистрация</TextBlock>
+                <Image Style="{StaticResource img}" Height="50" Width="50" Source="Res/back.png" />
+                </Grid>
+
+                <GroupBox Margin ="0,20,0,20" Style="{StaticResource gropbox}" Header="Введите фамилию">
+                    <TextBox x:Name="tbx_Surname"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите имя">
+                    <TextBox x:Name="tbx_Firstname"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите отчество">
+                    <TextBox x:Name="tbx_Patronymic"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите адрес">
+                    <TextBox x:Name="tbx_Adress"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите мобильный телефон">
+                    <TextBox x:Name="tbx_Mobile_phone"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите e-mail">
+                    <TextBox x:Name="tbx_Email"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите логин">
+                    <TextBox x:Name="tbx_Login"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Введите пароль">
+                    <PasswordBox x:Name="pb_Password"/>
+                </GroupBox>
+                <GroupBox Style="{StaticResource gropbox}" Header="Выберите роль">
+                    <ComboBox x:Name="cb_Role"/>
+                </GroupBox>
+                <Button x:Name="bt_Registation" Click="bt_Registation_Click" Template="{StaticResource big_btn}" Content="Зарегистрироваться"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

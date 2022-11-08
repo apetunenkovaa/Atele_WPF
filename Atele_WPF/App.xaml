@@ -47,7 +47,7 @@
             </Border>
         </ControlTemplate>
 
-        <Style x:Key="gropdox" TargetType="GroupBox">
+        <Style x:Key="gropbox" TargetType="GroupBox">
             <Setter Property="Width" Value="500"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="18"/>
@@ -56,12 +56,19 @@
             <Setter Property="FontFamily" Value="Century Gothic"/>
         </Style>
 
-        <ControlTemplate TargetType="Button" x:Key="btn">
-            <Border Width="55" Height="50" 
+        <Style x:Key="img" TargetType="Image">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Margin" Value="50"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+        
+        <ControlTemplate TargetType="Button" x:Key="big_btn">
+            <Border Width="200" Height="40" 
                     Background="White"                   
                     BorderThickness="1"
                     CornerRadius="20"
-                    Margin="150,0,10,0"
+                    Margin="0,0,10,30"
                     >
                 <ContentControl 
                      Content="{TemplateBinding Content}" 

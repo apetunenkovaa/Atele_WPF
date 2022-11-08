@@ -23,6 +23,10 @@ namespace Atele_WPF
         public RegPage()
         {
             InitializeComponent();
+            cb_Role.ItemsSource = DataBase.tBE.Role.ToList();
+            cb_Role.SelectedValuePath = "ID_Role";
+            cb_Role.DisplayMemberPath = "Role1";
+            cb_Role.SelectedIndex = 1;
         }
 
         private void bt_Registation_Click(object sender, RoutedEventArgs e)
@@ -37,10 +41,13 @@ namespace Atele_WPF
                 Mobile_phone = tbx_Mobile_phone.Text,
                 Email = tbx_Email.Text,
                 Login = tbx_Login.Text,
-                Password = pb_Password.Password.GetHashCode()
-                
-            }
-
+                Password = pb_Password.Password.GetHashCode(),
+                ID_Role = cb_Role.SelectedIndex + 1
+            };
+            DataBase.tBE.Client.Add(client);
+            DataBase.tBE.SaveChanges();  
+            MessageBox.Show("Пользователь добавлен");
+            FrameClass.MainFrame.Navigate(new MainPage());
         }
     }
 }

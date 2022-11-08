@@ -11,7 +11,14 @@
     <Grid>
         <StackPanel>
             <TextBlock Style="{StaticResource tb}">Авторизация</TextBlock>
-            <Button Content="Вернуться на главную" Click="Button_Click" />
+            <GroupBox Style="{StaticResource gropbox}" Header="Введите логин">
+                <TextBox Name="tb_Login"/>
+            </GroupBox>
+            <GroupBox Style="{StaticResource gropbox}" Header="Введите пароль">
+                <PasswordBox Name="pb_Password"/>
+            </GroupBox>
+            
+            <Button Content="Авторизация" Click="Button_Click" Template="{StaticResource big_btn}"/>
         </StackPanel>
 
         
