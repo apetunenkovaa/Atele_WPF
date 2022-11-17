@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace Atele_WPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для ShowOrders.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class ShowOrders : Page
     {
-        
-        public MainPage()
+        public ShowOrders()
         {
             InitializeComponent();
-           
         }
-
-        
     }
 }

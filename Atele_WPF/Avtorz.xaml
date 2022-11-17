@@ -10,7 +10,15 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Style="{StaticResource tb}">Авторизация</TextBlock>
+            <Grid>
+                <TextBlock Style="{StaticResource tb}">Авторизация</TextBlock>
+                <Button Name="btnBack" Template="{StaticResource btn_Back}" Click="btnBack_Click" HorizontalAlignment="Right">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="Res/back.png"/>
+                    </Button.OpacityMask>
+                </Button>
+            </Grid>
+            
             <GroupBox Style="{StaticResource gropbox}" Header="Введите логин">
                 <TextBox Name="tb_Login"/>
             </GroupBox>

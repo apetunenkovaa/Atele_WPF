@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace Atele_WPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для CreateRecord.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class CreateRecord : Page
     {
-        
-        public MainPage()
+        public CreateRecord()
         {
             InitializeComponent();
-           
         }
-
-        
     }
 }

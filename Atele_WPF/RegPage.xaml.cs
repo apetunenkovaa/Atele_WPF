@@ -49,5 +49,10 @@ namespace Atele_WPF
             MessageBox.Show("Пользователь добавлен");
             FrameClass.MainFrame.Navigate(new MainPage());
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new MainPage());
+        }
     }
 }

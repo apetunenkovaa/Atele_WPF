@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+//логин и пароль для входа: логин - admin, пароль - 1234
 namespace Atele_WPF
 {
     /// <summary>
@@ -30,27 +31,44 @@ namespace Atele_WPF
         {
             int p = pb_Password.Password.GetHashCode();
 
-            Client autoUser = DataBase.tBE.Client.FirstOrDefault(x => x.Login == tb_Login.Text && x.Password == p);
-
-            if (autoUser == null)  
+            if (tb_Login.Text != "" && pb_Password.Password != "")
             {
-                MessageBox.Show("Пользователя не существует");
+                Client client = DataBase.tBE.Client.FirstOrDefault(x => x.Login == tb_Login.Text && x.Password == p);
+          
+
+                if (client == null)
+                {
+                    MessageBox.Show("Данный пользователь не зарегистрирован\nВведите верный логин и пароль");
+                    tb_Login.Text = "";
+                    pb_Password.Password = "";
+                }
+                else
+                {
+                    switch (client.ID_Role)
+                    {
+                        case 1:
+                            FrameClass.MainFrame.Navigate(new AdminPage());
+                            break;
+                        case 2:
+                            FrameClass.MainFrame.Navigate(new PersonalPage());
+                            break;
+                        default:
+                            MessageBox.Show("Пока");
+                            break;
+                    }
+                }
+                
+
             }
             else
             {
-                switch (autoUser.ID_Role)  
-                {
-                    case 1:  
-                        FrameClass.MainFrame.Navigate(new AdminPage()); 
-                        break;
-                    case 2:  
-                        MessageBox.Show("Привет, пользователь");
-                        break;
-                    default:
-                        MessageBox.Show("Пока");
-                        break;
-                }
+                MessageBox.Show($"Не все поля заполнены");
             }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new MainPage());
         }
     }
 }

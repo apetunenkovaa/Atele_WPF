@@ -13,7 +13,12 @@
             <StackPanel>
                 <Grid>
                 <TextBlock Style="{StaticResource tb}" HorizontalAlignment="Left">Регистрация</TextBlock>
-                <Image Style="{StaticResource img}" Height="50" Width="50" Source="Res/back.png" />
+
+                    <Button Name="btnBack" Template="{StaticResource btn_Back}" Click="btnBack_Click" HorizontalAlignment="Right">
+                        <Button.OpacityMask>
+                            <ImageBrush ImageSource="Res/back.png"/>
+                        </Button.OpacityMask>
+                    </Button>
                 </Grid>
 
                 <GroupBox Margin ="0,20,0,20" Style="{StaticResource gropbox}" Header="Введите фамилию">

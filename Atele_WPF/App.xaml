@@ -81,6 +81,21 @@
             </Border>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="btn_Back">
+            <Border Width="50" Height="50" 
+                    Background="Black"                   
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Margin="0,0,0,0"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    />
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>
 
