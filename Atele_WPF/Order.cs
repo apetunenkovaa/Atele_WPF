@@ -17,32 +17,24 @@ namespace Atele_WPF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
+            this.Order_Accessory = new HashSet<Order_Accessory>();
             this.Order_basic_material = new HashSet<Order_basic_material>();
-            this.Order_measurements = new HashSet<Order_measurements>();
+            this.Order_measurement = new HashSet<Order_measurement>();
         }
     
         public int ID_Order { get; set; }
         public int ID_Client { get; set; }
-        public System.DateTime Date_start { get; set; }
-        public System.DateTime Date_finish { get; set; }
-        public bool Urgently { get; set; }
         public int ID_Work { get; set; }
-        public int ID_Sotrudnic { get; set; }
-        public int ID_Measurements { get; set; }
-        public int ID_Basic_material { get; set; }
-        public Nullable<int> Quantity_basic_material { get; set; }
-        public int ID_Accessories { get; set; }
-        public Nullable<int> Quantity_accessories { get; set; }
+        public Nullable<int> ID_Sotrudnic { get; set; }
     
-        public virtual Accessories Accessories { get; set; }
-        public virtual Basic_material Basic_material { get; set; }
         public virtual Client Client { get; set; }
-        public virtual Measurements Measurements { get; set; }
+        public virtual Sotrudnic Sotrudnic { get; set; }
+        public virtual Work Work { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Accessory> Order_Accessory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_basic_material> Order_basic_material { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_measurements> Order_measurements { get; set; }
-        public virtual Sotrudnic Sotrudnic { get; set; }
-        public virtual Work Work { get; set; }
+        public virtual ICollection<Order_measurement> Order_measurement { get; set; }
     }
 }

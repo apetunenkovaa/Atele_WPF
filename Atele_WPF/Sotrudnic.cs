@@ -25,14 +25,14 @@ namespace Atele_WPF
         public string Firstname_sotrudnic { get; set; }
         public string Patronymic_sotrudnic { get; set; }
         public int ID_Gender { get; set; }
-        public int ID_Passport { get; set; }
+        public Nullable<int> ID_Passport { get; set; }
         public string INN { get; set; }
         public string SNILS { get; set; }
         public int ID_Education { get; set; }
         public int ID_Qualification { get; set; }
         public int ID_Post { get; set; }
         public string Adress { get; set; }
-        public string Mobile_phone { get; set; }
+        public string Mobile_Phone { get; set; }
     
         public virtual Education Education { get; set; }
         public virtual Gender Gender { get; set; }

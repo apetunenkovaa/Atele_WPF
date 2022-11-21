@@ -12,10 +12,13 @@ namespace Atele_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Order_Accessory
     {
-        public int ID_polzovatel { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public int ID_Order_accessory { get; set; }
+        public int ID_Order { get; set; }
+        public int ID_Accessory { get; set; }
+    
+        public virtual Accessory Accessory { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

@@ -12,13 +12,18 @@ namespace Atele_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_measurements
+    public partial class Measurement
     {
-        public int ID_Order_measurements { get; set; }
-        public int ID_Order { get; set; }
-        public int ID_Measurements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Measurement()
+        {
+            this.Order_measurement = new HashSet<Order_measurement>();
+        }
     
-        public virtual Measurements Measurements { get; set; }
-        public virtual Order Order { get; set; }
+        public int ID_Measurement { get; set; }
+        public string Name_measurement { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_measurement> Order_measurement { get; set; }
     }
 }

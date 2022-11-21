@@ -24,5 +24,20 @@ namespace Atele_WPF
         {
             InitializeComponent();
         }
+
+        private void showUsersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new ShowUsers());
+        }
+
+        private void addNewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new orders());
+        }
+
+        private void showOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new ShowOrders());
+        }
     }
 }

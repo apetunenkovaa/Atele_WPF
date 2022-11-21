@@ -22,7 +22,6 @@ namespace Atele_WPF
     
         public int ID_Work { get; set; }
         public string Name_work { get; set; }
-        public string Type_work { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

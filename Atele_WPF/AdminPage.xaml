@@ -9,6 +9,23 @@
       Title="AdminPage">
 
     <Grid>
-        <TextBlock Style="{StaticResource tb}">Меню администратора</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Style="{StaticResource tb}">Меню администратора</TextBlock>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Список пользователей" Grid.Row="0" Name="showUsersBtn" Click="showUsersBtn_Click"/>
+            <Button Content="Список заказов" Grid.Row="1" Name="showOrderBtn" Click="showOrderBtn_Click"/>
+            <Button Content="Оформить заказ" Grid.Row="2" Name="addNewOrder" Click="addNewOrder_Click"/>
+        </Grid>
     </Grid>
 </Page>

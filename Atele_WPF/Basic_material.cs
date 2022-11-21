@@ -17,7 +17,6 @@ namespace Atele_WPF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Basic_material()
         {
-            this.Order = new HashSet<Order>();
             this.Order_basic_material = new HashSet<Order_basic_material>();
         }
     
@@ -25,8 +24,6 @@ namespace Atele_WPF
         public string Name_basic_material { get; set; }
         public double Cost_basic_material { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_basic_material> Order_basic_material { get; set; }
     }

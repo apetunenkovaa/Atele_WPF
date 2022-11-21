@@ -25,21 +25,21 @@ namespace Atele_WPF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Accessories> Accessories { get; set; }
+        public virtual DbSet<Accessory> Accessory { get; set; }
         public virtual DbSet<Basic_material> Basic_material { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<Measurements> Measurements { get; set; }
+        public virtual DbSet<Measurement> Measurement { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Order_Accessory> Order_Accessory { get; set; }
         public virtual DbSet<Order_basic_material> Order_basic_material { get; set; }
-        public virtual DbSet<Order_measurements> Order_measurements { get; set; }
+        public virtual DbSet<Order_measurement> Order_measurement { get; set; }
         public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Qualification> Qualification { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Sotrudnic> Sotrudnic { get; set; }
-        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Work> Work { get; set; }
     }
 }

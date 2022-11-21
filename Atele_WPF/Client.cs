@@ -21,14 +21,14 @@ namespace Atele_WPF
         }
     
         public int ID_Client { get; set; }
-        public string Login { get; set; }
-        public int Password { get; set; }
         public string Surname_Client { get; set; }
         public string Firstname_Client { get; set; }
         public string Patronymic_Client { get; set; }
         public string Adress { get; set; }
         public string Mobile_phone { get; set; }
         public string Email { get; set; }
+        public string Login { get; set; }
+        public int Password { get; set; }
         public int ID_Role { get; set; }
     
         public virtual Role Role { get; set; }

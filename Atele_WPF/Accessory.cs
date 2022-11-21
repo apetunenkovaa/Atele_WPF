@@ -12,19 +12,19 @@ namespace Atele_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Accessories
+    public partial class Accessory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Accessories()
+        public Accessory()
         {
-            this.Order = new HashSet<Order>();
+            this.Order_Accessory = new HashSet<Order_Accessory>();
         }
     
-        public int ID_Accessories { get; set; }
-        public string Name_accessories { get; set; }
-        public int Cost_accessories { get; set; }
+        public int ID_Accessory { get; set; }
+        public string Name_accessory { get; set; }
+        public int Cost_accessory { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order_Accessory> Order_Accessory { get; set; }
     }
 }

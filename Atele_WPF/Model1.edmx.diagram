@@ -5,38 +5,37 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2c565bab29c344fd909f5a067b08f077" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Accessories" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Basic_material" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Education" Width="1.5" PointX="1.5" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="1.5" PointY="31.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Measurements" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Order_basic_material" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Order_measurements" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Passport" Width="1.5" PointX="1.5" PointY="34" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Post" Width="1.5" PointX="1.5" PointY="37" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Qualification" Width="1.5" PointX="1.5" PointY="39.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="1.5" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Sotrudnic" Width="1.5" PointX="0.75" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Work" Width="1.5" PointX="0.75" PointY="41.625" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Order_Accessories" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_Basic_material" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_basic_material_Basic_material" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Client_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sotrudnic_Education" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sotrudnic_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_Measurements" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_measurements_Measurements" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_basic_material_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_measurements_Order_measurements" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_Sotrudnic" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Order_Work" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sotrudnic_Passport" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sotrudnic_Post" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sotrudnic_Qualification" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Accessory" Width="1.5" PointX="5.25" PointY="11.75" />
+        <EntityTypeShape EntityType="Model.Basic_material" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="3" PointY="18.125" />
+        <EntityTypeShape EntityType="Model.Education" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="Model.Measurement" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="5.25" PointY="4.125" />
+        <EntityTypeShape EntityType="Model.Order_Accessory" Width="1.5" PointX="7.5" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.Order_basic_material" Width="1.5" PointX="7.5" PointY="1.5" />
+        <EntityTypeShape EntityType="Model.Order_measurement" Width="1.5" PointX="7.5" PointY="4.5" />
+        <EntityTypeShape EntityType="Model.Passport" Width="1.5" PointX="0.75" PointY="12.625" />
+        <EntityTypeShape EntityType="Model.Post" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="Model.Qualification" Width="1.5" PointX="0.75" PointY="15.625" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="0.75" PointY="19" />
+        <EntityTypeShape EntityType="Model.Sotrudnic" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="Model.Work" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="Model.FK__Order_Acc__ID_Ac__40058253" />
+        <AssociationConnector Association="Model.FK__Order_bas__ID_Ba__3864608B" />
+        <AssociationConnector Association="Model.FK__Client__ID_Role__1BC821DD" />
+        <AssociationConnector Association="Model.FK__Order__ID_Client__32AB8735" />
+        <AssociationConnector Association="Model.FK__Sotrudnic__ID_Ed__2DE6D218" />
+        <AssociationConnector Association="Model.FK__Sotrudnic__ID_Ge__2BFE89A6" />
+        <AssociationConnector Association="Model.FK__Order_mea__ID_Me__3C34F16F" />
+        <AssociationConnector Association="Model.FK__Order__ID_Sotrud__3493CFA7" />
+        <AssociationConnector Association="Model.FK__Order__ID_Work__339FAB6E" />
+        <AssociationConnector Association="Model.FK__Order_Acc__ID_Or__3F115E1A" />
+        <AssociationConnector Association="Model.FK__Order_bas__ID_Or__37703C52" />
+        <AssociationConnector Association="Model.FK__Order_mea__ID_Or__3B40CD36" />
+        <AssociationConnector Association="Model.FK__Sotrudnic__ID_Pa__2CF2ADDF" />
+        <AssociationConnector Association="Model.FK__Sotrudnic__ID_Po__2FCF1A8A" />
+        <AssociationConnector Association="Model.FK__Sotrudnic__ID_Qu__2EDAF651" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

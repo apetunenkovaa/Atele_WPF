@@ -12,14 +12,14 @@ namespace Atele_WPF
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_basic_material
+    public partial class Order_measurement
     {
-        public int ID_Order_material { get; set; }
-        public Nullable<int> ID_Order { get; set; }
-        public Nullable<int> ID_Basic_material { get; set; }
-        public Nullable<int> Quantity_Basic_material { get; set; }
+        public int ID_Order_measurement { get; set; }
+        public int ID_Order { get; set; }
+        public int ID_Measurement { get; set; }
+        public Nullable<int> Size { get; set; }
     
-        public virtual Basic_material Basic_material { get; set; }
+        public virtual Measurement Measurement { get; set; }
         public virtual Order Order { get; set; }
     }
 }

@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Accessories">
+    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accessory">
           <Key>
-            <PropertyRef Name="ID_Accessories" />
+            <PropertyRef Name="ID_Accessory" />
           </Key>
-          <Property Name="ID_Accessories" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name_accessories" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Cost_accessories" Type="int" Nullable="false" />
+          <Property Name="ID_Accessory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_accessory" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cost_accessory" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Basic_material">
           <Key>
@@ -26,14 +26,14 @@
             <PropertyRef Name="ID_Client" />
           </Key>
           <Property Name="ID_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="int" Nullable="false" />
           <Property Name="Surname_Client" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Firstname_Client" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic_Client" Type="nvarchar" MaxLength="50" />
-          <Property Name="Adress" Type="nvarchar(max)" />
-          <Property Name="Mobile_phone" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mobile_phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="int" Nullable="false" />
           <Property Name="ID_Role" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Education">
@@ -48,24 +48,14 @@
             <PropertyRef Name="ID_Gender" />
           </Key>
           <Property Name="ID_Gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <EntityType Name="Measurements">
+        <EntityType Name="Measurement">
           <Key>
-            <PropertyRef Name="ID_Measurements" />
+            <PropertyRef Name="ID_Measurement" />
           </Key>
-          <Property Name="ID_Measurements" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Bust" Type="int" />
-          <Property Name="Waist_circumference" Type="int" />
-          <Property Name="Hip_girth" Type="int" />
-          <Property Name="Neck_girth" Type="int" />
-          <Property Name="Сhest_width" Type="int" />
-          <Property Name="Back_width" Type="int" />
-          <Property Name="Arm_circumference" Type="int" />
-          <Property Name="Wrist_girth" Type="int" />
-          <Property Name="Knee_girth" Type="int" />
-          <Property Name="Foot_size" Type="int" />
-          <Property Name="Growth" Type="int" />
+          <Property Name="ID_Measurement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_measurement" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -73,32 +63,34 @@
           </Key>
           <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Client" Type="int" Nullable="false" />
-          <Property Name="Date_start" Type="date" Nullable="false" />
-          <Property Name="Date_finish" Type="date" Nullable="false" />
-          <Property Name="Urgently" Type="bit" Nullable="false" />
           <Property Name="ID_Work" Type="int" Nullable="false" />
-          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
-          <Property Name="ID_Measurements" Type="int" Nullable="false" />
-          <Property Name="ID_Basic_material" Type="int" Nullable="false" />
-          <Property Name="Quantity_basic_material" Type="int" />
-          <Property Name="ID_Accessories" Type="int" Nullable="false" />
-          <Property Name="Quantity_accessories" Type="int" />
+          <Property Name="ID_Sotrudnic" Type="int" />
+        </EntityType>
+        <EntityType Name="Order_Accessory">
+          <Key>
+            <PropertyRef Name="ID_Order_accessory" />
+          </Key>
+          <Property Name="ID_Order_accessory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Order" Type="int" Nullable="false" />
+          <Property Name="ID_Accessory" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Order_basic_material">
           <Key>
-            <PropertyRef Name="ID_Order_basic_material" />
+            <PropertyRef Name="ID_Order_material" />
           </Key>
-          <Property Name="ID_Order_basic_material" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_Order" Type="int" Nullable="false" />
-          <Property Name="ID_Basic_material" Type="int" Nullable="false" />
+          <Property Name="ID_Order_material" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Order" Type="int" />
+          <Property Name="ID_Basic_material" Type="int" />
+          <Property Name="Quantity_Basic_material" Type="int" />
         </EntityType>
-        <EntityType Name="Order_measurements">
+        <EntityType Name="Order_measurement">
           <Key>
-            <PropertyRef Name="ID_Order_measurements" />
+            <PropertyRef Name="ID_Order_measurement" />
           </Key>
-          <Property Name="ID_Order_measurements" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Order_measurement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Order" Type="int" Nullable="false" />
-          <Property Name="ID_Measurements" Type="int" Nullable="false" />
+          <Property Name="ID_Measurement" Type="int" Nullable="false" />
+          <Property Name="Size" Type="int" />
         </EntityType>
         <EntityType Name="Passport">
           <Key>
@@ -140,22 +132,14 @@
           <Property Name="Firstname_sotrudnic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic_sotrudnic" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_Gender" Type="int" Nullable="false" />
-          <Property Name="ID_Passport" Type="int" Nullable="false" />
+          <Property Name="ID_Passport" Type="int" />
           <Property Name="INN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SNILS" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Education" Type="int" Nullable="false" />
           <Property Name="ID_Qualification" Type="int" Nullable="false" />
           <Property Name="ID_Post" Type="int" Nullable="false" />
           <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Mobile_phone" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="ID_polzovatel" />
-          </Key>
-          <Property Name="ID_polzovatel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mobile_Phone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Work">
           <Key>
@@ -163,9 +147,8 @@
           </Key>
           <Property Name="ID_Work" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name_work" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Type_work" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Client_Role">
+        <Association Name="FK__Client__ID_Role__1BC821DD">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,55 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Accessories">
-          <End Role="Accessories" Type="Self.Accessories" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Accessories">
-              <PropertyRef Name="ID_Accessories" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ID_Accessories" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Basic_material">
-          <End Role="Basic_material" Type="Self.Basic_material" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Basic_material">
-              <PropertyRef Name="ID_Basic_material" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ID_Basic_material" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_basic_material_Basic_material">
-          <End Role="Basic_material" Type="Self.Basic_material" Multiplicity="1" />
-          <End Role="Order_basic_material" Type="Self.Order_basic_material" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Basic_material">
-              <PropertyRef Name="ID_Basic_material" />
-            </Principal>
-            <Dependent Role="Order_basic_material">
-              <PropertyRef Name="ID_Basic_material" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_basic_material_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="Order_basic_material" Type="Self.Order_basic_material" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID_Order" />
-            </Principal>
-            <Dependent Role="Order_basic_material">
-              <PropertyRef Name="ID_Order" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Client">
+        <Association Name="FK__Order__ID_Client__32AB8735">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -237,44 +172,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Measurements">
-          <End Role="Measurements" Type="Self.Measurements" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Measurements">
-              <PropertyRef Name="ID_Measurements" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ID_Measurements" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_measurements_Measurements">
-          <End Role="Measurements" Type="Self.Measurements" Multiplicity="1" />
-          <End Role="Order_measurements" Type="Self.Order_measurements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Measurements">
-              <PropertyRef Name="ID_Measurements" />
-            </Principal>
-            <Dependent Role="Order_measurements">
-              <PropertyRef Name="ID_Measurements" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_measurements_Order_measurements">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="Order_measurements" Type="Self.Order_measurements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID_Order" />
-            </Principal>
-            <Dependent Role="Order_measurements">
-              <PropertyRef Name="ID_Order" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Sotrudnic">
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+        <Association Name="FK__Order__ID_Sotrud__3493CFA7">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sotrudnic">
@@ -285,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Work">
+        <Association Name="FK__Order__ID_Work__339FAB6E">
           <End Role="Work" Type="Self.Work" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -297,7 +196,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Education">
+        <Association Name="FK__Order_Acc__ID_Ac__40058253">
+          <End Role="Accessory" Type="Self.Accessory" Multiplicity="1" />
+          <End Role="Order_Accessory" Type="Self.Order_Accessory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessory">
+              <PropertyRef Name="ID_Accessory" />
+            </Principal>
+            <Dependent Role="Order_Accessory">
+              <PropertyRef Name="ID_Accessory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Acc__ID_Or__3F115E1A">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order_Accessory" Type="Self.Order_Accessory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Order_Accessory">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_bas__ID_Ba__3864608B">
+          <End Role="Basic_material" Type="Self.Basic_material" Multiplicity="0..1" />
+          <End Role="Order_basic_material" Type="Self.Order_basic_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basic_material">
+              <PropertyRef Name="ID_Basic_material" />
+            </Principal>
+            <Dependent Role="Order_basic_material">
+              <PropertyRef Name="ID_Basic_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_bas__ID_Or__37703C52">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Order_basic_material" Type="Self.Order_basic_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Order_basic_material">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_mea__ID_Me__3C34F16F">
+          <End Role="Measurement" Type="Self.Measurement" Multiplicity="1" />
+          <End Role="Order_measurement" Type="Self.Order_measurement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measurement">
+              <PropertyRef Name="ID_Measurement" />
+            </Principal>
+            <Dependent Role="Order_measurement">
+              <PropertyRef Name="ID_Measurement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_mea__ID_Or__3B40CD36">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order_measurement" Type="Self.Order_measurement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Order_measurement">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__ID_Ed__2DE6D218">
           <End Role="Education" Type="Self.Education" Multiplicity="1" />
           <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -309,7 +280,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Gender">
+        <Association Name="FK__Sotrudnic__ID_Ge__2BFE89A6">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
           <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -321,8 +292,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Passport">
-          <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+        <Association Name="FK__Sotrudnic__ID_Pa__2CF2ADDF">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
           <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Passport">
@@ -333,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Post">
+        <Association Name="FK__Sotrudnic__ID_Po__2FCF1A8A">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
           <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -345,7 +316,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Qualification">
+        <Association Name="FK__Sotrudnic__ID_Qu__2EDAF651">
           <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
           <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -358,162 +329,223 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
-          <EntitySet Name="Accessories" EntityType="Self.Accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accessory" EntityType="Self.Accessory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Basic_material" EntityType="Self.Basic_material" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Measurements" EntityType="Self.Measurements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Measurement" EntityType="Self.Measurement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Accessory" EntityType="Self.Order_Accessory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_basic_material" EntityType="Self.Order_basic_material" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order_measurements" EntityType="Self.Order_measurements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_measurement" EntityType="Self.Order_measurement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Qualification" EntityType="Self.Qualification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Client_Role" Association="Self.FK_Client_Role">
+          <AssociationSet Name="FK__Client__ID_Role__1BC821DD" Association="Self.FK__Client__ID_Role__1BC821DD">
             <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Accessories" Association="Self.FK_Order_Accessories">
-            <End Role="Accessories" EntitySet="Accessories" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Basic_material" Association="Self.FK_Order_Basic_material">
-            <End Role="Basic_material" EntitySet="Basic_material" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_basic_material_Basic_material" Association="Self.FK_Order_basic_material_Basic_material">
-            <End Role="Basic_material" EntitySet="Basic_material" />
-            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_basic_material_Order" Association="Self.FK_Order_basic_material_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+          <AssociationSet Name="FK__Order__ID_Client__32AB8735" Association="Self.FK__Order__ID_Client__32AB8735">
             <End Role="Client" EntitySet="Client" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Measurements" Association="Self.FK_Order_Measurements">
-            <End Role="Measurements" EntitySet="Measurements" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_measurements_Measurements" Association="Self.FK_Order_measurements_Measurements">
-            <End Role="Measurements" EntitySet="Measurements" />
-            <End Role="Order_measurements" EntitySet="Order_measurements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_measurements_Order_measurements" Association="Self.FK_Order_measurements_Order_measurements">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Order_measurements" EntitySet="Order_measurements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Sotrudnic" Association="Self.FK_Order_Sotrudnic">
+          <AssociationSet Name="FK__Order__ID_Sotrud__3493CFA7" Association="Self.FK__Order__ID_Sotrud__3493CFA7">
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Work" Association="Self.FK_Order_Work">
+          <AssociationSet Name="FK__Order__ID_Work__339FAB6E" Association="Self.FK__Order__ID_Work__339FAB6E">
             <End Role="Work" EntitySet="Work" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Education" Association="Self.FK_Sotrudnic_Education">
+          <AssociationSet Name="FK__Order_Acc__ID_Ac__40058253" Association="Self.FK__Order_Acc__ID_Ac__40058253">
+            <End Role="Accessory" EntitySet="Accessory" />
+            <End Role="Order_Accessory" EntitySet="Order_Accessory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Acc__ID_Or__3F115E1A" Association="Self.FK__Order_Acc__ID_Or__3F115E1A">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_Accessory" EntitySet="Order_Accessory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_bas__ID_Ba__3864608B" Association="Self.FK__Order_bas__ID_Ba__3864608B">
+            <End Role="Basic_material" EntitySet="Basic_material" />
+            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_bas__ID_Or__37703C52" Association="Self.FK__Order_bas__ID_Or__37703C52">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_mea__ID_Me__3C34F16F" Association="Self.FK__Order_mea__ID_Me__3C34F16F">
+            <End Role="Measurement" EntitySet="Measurement" />
+            <End Role="Order_measurement" EntitySet="Order_measurement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_mea__ID_Or__3B40CD36" Association="Self.FK__Order_mea__ID_Or__3B40CD36">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_measurement" EntitySet="Order_measurement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__ID_Ed__2DE6D218" Association="Self.FK__Sotrudnic__ID_Ed__2DE6D218">
             <End Role="Education" EntitySet="Education" />
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Gender" Association="Self.FK_Sotrudnic_Gender">
+          <AssociationSet Name="FK__Sotrudnic__ID_Ge__2BFE89A6" Association="Self.FK__Sotrudnic__ID_Ge__2BFE89A6">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Passport" Association="Self.FK_Sotrudnic_Passport">
+          <AssociationSet Name="FK__Sotrudnic__ID_Pa__2CF2ADDF" Association="Self.FK__Sotrudnic__ID_Pa__2CF2ADDF">
             <End Role="Passport" EntitySet="Passport" />
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Post" Association="Self.FK_Sotrudnic_Post">
+          <AssociationSet Name="FK__Sotrudnic__ID_Po__2FCF1A8A" Association="Self.FK__Sotrudnic__ID_Po__2FCF1A8A">
             <End Role="Post" EntitySet="Post" />
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Qualification" Association="Self.FK_Sotrudnic_Qualification">
+          <AssociationSet Name="FK__Sotrudnic__ID_Qu__2EDAF651" Association="Self.FK__Sotrudnic__ID_Qu__2EDAF651">
             <End Role="Qualification" EntitySet="Qualification" />
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Accessories">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accessory" EntityType="Model.Accessory" />
+          <EntitySet Name="Basic_material" EntityType="Model.Basic_material" />
+          <EntitySet Name="Client" EntityType="Model.Client" />
+          <EntitySet Name="Education" EntityType="Model.Education" />
+          <EntitySet Name="Gender" EntityType="Model.Gender" />
+          <EntitySet Name="Measurement" EntityType="Model.Measurement" />
+          <EntitySet Name="Order" EntityType="Model.Order" />
+          <EntitySet Name="Order_Accessory" EntityType="Model.Order_Accessory" />
+          <EntitySet Name="Order_basic_material" EntityType="Model.Order_basic_material" />
+          <EntitySet Name="Order_measurement" EntityType="Model.Order_measurement" />
+          <EntitySet Name="Passport" EntityType="Model.Passport" />
+          <EntitySet Name="Post" EntityType="Model.Post" />
+          <EntitySet Name="Qualification" EntityType="Model.Qualification" />
+          <EntitySet Name="Role" EntityType="Model.Role" />
+          <EntitySet Name="Sotrudnic" EntityType="Model.Sotrudnic" />
+          <EntitySet Name="Work" EntityType="Model.Work" />
+          <AssociationSet Name="FK__Order_Acc__ID_Ac__40058253" Association="Model.FK__Order_Acc__ID_Ac__40058253">
+            <End Role="Accessory" EntitySet="Accessory" />
+            <End Role="Order_Accessory" EntitySet="Order_Accessory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_bas__ID_Ba__3864608B" Association="Model.FK__Order_bas__ID_Ba__3864608B">
+            <End Role="Basic_material" EntitySet="Basic_material" />
+            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__ID_Role__1BC821DD" Association="Model.FK__Client__ID_Role__1BC821DD">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__ID_Client__32AB8735" Association="Model.FK__Order__ID_Client__32AB8735">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__ID_Ed__2DE6D218" Association="Model.FK__Sotrudnic__ID_Ed__2DE6D218">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__ID_Ge__2BFE89A6" Association="Model.FK__Sotrudnic__ID_Ge__2BFE89A6">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_mea__ID_Me__3C34F16F" Association="Model.FK__Order_mea__ID_Me__3C34F16F">
+            <End Role="Measurement" EntitySet="Measurement" />
+            <End Role="Order_measurement" EntitySet="Order_measurement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__ID_Sotrud__3493CFA7" Association="Model.FK__Order__ID_Sotrud__3493CFA7">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__ID_Work__339FAB6E" Association="Model.FK__Order__ID_Work__339FAB6E">
+            <End Role="Work" EntitySet="Work" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Acc__ID_Or__3F115E1A" Association="Model.FK__Order_Acc__ID_Or__3F115E1A">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_Accessory" EntitySet="Order_Accessory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_bas__ID_Or__37703C52" Association="Model.FK__Order_bas__ID_Or__37703C52">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_mea__ID_Or__3B40CD36" Association="Model.FK__Order_mea__ID_Or__3B40CD36">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_measurement" EntitySet="Order_measurement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__ID_Pa__2CF2ADDF" Association="Model.FK__Sotrudnic__ID_Pa__2CF2ADDF">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__ID_Po__2FCF1A8A" Association="Model.FK__Sotrudnic__ID_Po__2FCF1A8A">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__ID_Qu__2EDAF651" Association="Model.FK__Sotrudnic__ID_Qu__2EDAF651">
+            <End Role="Qualification" EntitySet="Qualification" />
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Accessory">
           <Key>
-            <PropertyRef Name="ID_Accessories" />
+            <PropertyRef Name="ID_Accessory" />
           </Key>
-          <Property Name="ID_Accessories" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name_accessories" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cost_accessories" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Accessories" FromRole="Accessories" ToRole="Order" />
+          <Property Name="ID_Accessory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_accessory" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost_accessory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order_Accessory" Relationship="Model.FK__Order_Acc__ID_Ac__40058253" FromRole="Accessory" ToRole="Order_Accessory" />
         </EntityType>
         <EntityType Name="Basic_material">
           <Key>
             <PropertyRef Name="ID_Basic_material" />
           </Key>
           <Property Name="ID_Basic_material" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name_basic_material" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name_basic_material" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Cost_basic_material" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Basic_material" FromRole="Basic_material" ToRole="Order" />
-          <NavigationProperty Name="Order_basic_material" Relationship="Self.FK_Order_basic_material_Basic_material" FromRole="Basic_material" ToRole="Order_basic_material" />
+          <NavigationProperty Name="Order_basic_material" Relationship="Model.FK__Order_bas__ID_Ba__3864608B" FromRole="Basic_material" ToRole="Order_basic_material" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ID_Client" />
           </Key>
           <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="Int32" Nullable="false" />
-          <Property Name="Surname_Client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Firstname_Client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname_Client" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname_Client" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic_Client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile_phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="Int32" Nullable="false" />
           <Property Name="ID_Role" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Client_Role" FromRole="Client" ToRole="Role" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Client" FromRole="Client" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="Model.FK__Client__ID_Role__1BC821DD" FromRole="Client" ToRole="Role" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order__ID_Client__32AB8735" FromRole="Client" ToRole="Order" />
         </EntityType>
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="ID_Education" />
           </Key>
           <Property Name="ID_Education" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Education_level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Sotrudnic_Education" FromRole="Education" ToRole="Sotrudnic" />
+          <Property Name="Education_level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Model.FK__Sotrudnic__ID_Ed__2DE6D218" FromRole="Education" ToRole="Sotrudnic" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="ID_Gender" />
           </Key>
           <Property Name="ID_Gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Gender1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Sotrudnic_Gender" FromRole="Gender" ToRole="Sotrudnic" />
+          <Property Name="Gender1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Model.FK__Sotrudnic__ID_Ge__2BFE89A6" FromRole="Gender" ToRole="Sotrudnic" />
         </EntityType>
-        <EntityType Name="Measurements">
+        <EntityType Name="Measurement">
           <Key>
-            <PropertyRef Name="ID_Measurements" />
+            <PropertyRef Name="ID_Measurement" />
           </Key>
-          <Property Name="ID_Measurements" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Bust" Type="Int32" />
-          <Property Name="Waist_circumference" Type="Int32" />
-          <Property Name="Hip_girth" Type="Int32" />
-          <Property Name="Neck_girth" Type="Int32" />
-          <Property Name="Сhest_width" Type="Int32" />
-          <Property Name="Back_width" Type="Int32" />
-          <Property Name="Arm_circumference" Type="Int32" />
-          <Property Name="Wrist_girth" Type="Int32" />
-          <Property Name="Knee_girth" Type="Int32" />
-          <Property Name="Foot_size" Type="Int32" />
-          <Property Name="Growth" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Measurements" FromRole="Measurements" ToRole="Order" />
-          <NavigationProperty Name="Order_measurements" Relationship="Self.FK_Order_measurements_Measurements" FromRole="Measurements" ToRole="Order_measurements" />
+          <Property Name="ID_Measurement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_measurement" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order_measurement" Relationship="Model.FK__Order_mea__ID_Me__3C34F16F" FromRole="Measurement" ToRole="Order_measurement" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -521,148 +553,129 @@
           </Key>
           <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Client" Type="Int32" Nullable="false" />
-          <Property Name="Date_start" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Date_finish" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Urgently" Type="Boolean" Nullable="false" />
           <Property Name="ID_Work" Type="Int32" Nullable="false" />
-          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
-          <Property Name="ID_Measurements" Type="Int32" Nullable="false" />
-          <Property Name="ID_Basic_material" Type="Int32" Nullable="false" />
-          <Property Name="Quantity_basic_material" Type="Int32" />
-          <Property Name="ID_Accessories" Type="Int32" Nullable="false" />
-          <Property Name="Quantity_accessories" Type="Int32" />
-          <NavigationProperty Name="Accessories" Relationship="Self.FK_Order_Accessories" FromRole="Order" ToRole="Accessories" />
-          <NavigationProperty Name="Basic_material" Relationship="Self.FK_Order_Basic_material" FromRole="Order" ToRole="Basic_material" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />
-          <NavigationProperty Name="Measurements" Relationship="Self.FK_Order_Measurements" FromRole="Order" ToRole="Measurements" />
-          <NavigationProperty Name="Order_basic_material" Relationship="Self.FK_Order_basic_material_Order" FromRole="Order" ToRole="Order_basic_material" />
-          <NavigationProperty Name="Order_measurements" Relationship="Self.FK_Order_measurements_Order_measurements" FromRole="Order" ToRole="Order_measurements" />
-          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Order_Sotrudnic" FromRole="Order" ToRole="Sotrudnic" />
-          <NavigationProperty Name="Work" Relationship="Self.FK_Order_Work" FromRole="Order" ToRole="Work" />
+          <Property Name="ID_Sotrudnic" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Model.FK__Order__ID_Client__32AB8735" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Model.FK__Order__ID_Sotrud__3493CFA7" FromRole="Order" ToRole="Sotrudnic" />
+          <NavigationProperty Name="Work" Relationship="Model.FK__Order__ID_Work__339FAB6E" FromRole="Order" ToRole="Work" />
+          <NavigationProperty Name="Order_Accessory" Relationship="Model.FK__Order_Acc__ID_Or__3F115E1A" FromRole="Order" ToRole="Order_Accessory" />
+          <NavigationProperty Name="Order_basic_material" Relationship="Model.FK__Order_bas__ID_Or__37703C52" FromRole="Order" ToRole="Order_basic_material" />
+          <NavigationProperty Name="Order_measurement" Relationship="Model.FK__Order_mea__ID_Or__3B40CD36" FromRole="Order" ToRole="Order_measurement" />
+        </EntityType>
+        <EntityType Name="Order_Accessory">
+          <Key>
+            <PropertyRef Name="ID_Order_accessory" />
+          </Key>
+          <Property Name="ID_Order_accessory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Order" Type="Int32" Nullable="false" />
+          <Property Name="ID_Accessory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accessory" Relationship="Model.FK__Order_Acc__ID_Ac__40058253" FromRole="Order_Accessory" ToRole="Accessory" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order_Acc__ID_Or__3F115E1A" FromRole="Order_Accessory" ToRole="Order" />
         </EntityType>
         <EntityType Name="Order_basic_material">
           <Key>
-            <PropertyRef Name="ID_Order_basic_material" />
+            <PropertyRef Name="ID_Order_material" />
           </Key>
-          <Property Name="ID_Order_basic_material" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Order" Type="Int32" Nullable="false" />
-          <Property Name="ID_Basic_material" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Basic_material" Relationship="Self.FK_Order_basic_material_Basic_material" FromRole="Order_basic_material" ToRole="Basic_material" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_basic_material_Order" FromRole="Order_basic_material" ToRole="Order" />
+          <Property Name="ID_Order_material" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Order" Type="Int32" />
+          <Property Name="ID_Basic_material" Type="Int32" />
+          <Property Name="Quantity_Basic_material" Type="Int32" />
+          <NavigationProperty Name="Basic_material" Relationship="Model.FK__Order_bas__ID_Ba__3864608B" FromRole="Order_basic_material" ToRole="Basic_material" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order_bas__ID_Or__37703C52" FromRole="Order_basic_material" ToRole="Order" />
         </EntityType>
-        <EntityType Name="Order_measurements">
+        <EntityType Name="Order_measurement">
           <Key>
-            <PropertyRef Name="ID_Order_measurements" />
+            <PropertyRef Name="ID_Order_measurement" />
           </Key>
-          <Property Name="ID_Order_measurements" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Order_measurement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Order" Type="Int32" Nullable="false" />
-          <Property Name="ID_Measurements" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Measurements" Relationship="Self.FK_Order_measurements_Measurements" FromRole="Order_measurements" ToRole="Measurements" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_measurements_Order_measurements" FromRole="Order_measurements" ToRole="Order" />
+          <Property Name="ID_Measurement" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="Int32" />
+          <NavigationProperty Name="Measurement" Relationship="Model.FK__Order_mea__ID_Me__3C34F16F" FromRole="Order_measurement" ToRole="Measurement" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order_mea__ID_Or__3B40CD36" FromRole="Order_measurement" ToRole="Order" />
         </EntityType>
         <EntityType Name="Passport">
           <Key>
             <PropertyRef Name="ID_Passport" />
           </Key>
           <Property Name="ID_Passport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Series_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Issued_by_whom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Series_number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Issued_by_whom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date_of_issue" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Division_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Sotrudnic_Passport" FromRole="Passport" ToRole="Sotrudnic" />
+          <Property Name="Division_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Model.FK__Sotrudnic__ID_Pa__2CF2ADDF" FromRole="Passport" ToRole="Sotrudnic" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="ID_Post" />
           </Key>
           <Property Name="ID_Post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Post1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Sotrudnic_Post" FromRole="Post" ToRole="Sotrudnic" />
+          <Property Name="Post1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Model.FK__Sotrudnic__ID_Po__2FCF1A8A" FromRole="Post" ToRole="Sotrudnic" />
         </EntityType>
         <EntityType Name="Qualification">
           <Key>
             <PropertyRef Name="ID_Qualification" />
           </Key>
           <Property Name="ID_Qualification" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Qualification_level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Sotrudnic_Qualification" FromRole="Qualification" ToRole="Sotrudnic" />
+          <Property Name="Qualification_level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Model.FK__Sotrudnic__ID_Qu__2EDAF651" FromRole="Qualification" ToRole="Sotrudnic" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID_Role" />
           </Key>
           <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Role" FromRole="Role" ToRole="Client" />
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Model.FK__Client__ID_Role__1BC821DD" FromRole="Role" ToRole="Client" />
         </EntityType>
         <EntityType Name="Sotrudnic">
           <Key>
             <PropertyRef Name="ID_Sotrudnic" />
           </Key>
           <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Surname_sotrudnic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Firstname_sotrudnic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname_sotrudnic" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname_sotrudnic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic_sotrudnic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Gender" Type="Int32" Nullable="false" />
-          <Property Name="ID_Passport" Type="Int32" Nullable="false" />
-          <Property Name="INN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SNILS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Passport" Type="Int32" />
+          <Property Name="INN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SNILS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Education" Type="Int32" Nullable="false" />
           <Property Name="ID_Qualification" Type="Int32" Nullable="false" />
           <Property Name="ID_Post" Type="Int32" Nullable="false" />
-          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mobile_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Education" Relationship="Self.FK_Sotrudnic_Education" FromRole="Sotrudnic" ToRole="Education" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Sotrudnic_Gender" FromRole="Sotrudnic" ToRole="Gender" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Sotrudnic" FromRole="Sotrudnic" ToRole="Order" />
-          <NavigationProperty Name="Passport" Relationship="Self.FK_Sotrudnic_Passport" FromRole="Sotrudnic" ToRole="Passport" />
-          <NavigationProperty Name="Post" Relationship="Self.FK_Sotrudnic_Post" FromRole="Sotrudnic" ToRole="Post" />
-          <NavigationProperty Name="Qualification" Relationship="Self.FK_Sotrudnic_Qualification" FromRole="Sotrudnic" ToRole="Qualification" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="ID_polzovatel" />
-          </Key>
-          <Property Name="ID_polzovatel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education" Relationship="Model.FK__Sotrudnic__ID_Ed__2DE6D218" FromRole="Sotrudnic" ToRole="Education" />
+          <NavigationProperty Name="Gender" Relationship="Model.FK__Sotrudnic__ID_Ge__2BFE89A6" FromRole="Sotrudnic" ToRole="Gender" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order__ID_Sotrud__3493CFA7" FromRole="Sotrudnic" ToRole="Order" />
+          <NavigationProperty Name="Passport" Relationship="Model.FK__Sotrudnic__ID_Pa__2CF2ADDF" FromRole="Sotrudnic" ToRole="Passport" />
+          <NavigationProperty Name="Post" Relationship="Model.FK__Sotrudnic__ID_Po__2FCF1A8A" FromRole="Sotrudnic" ToRole="Post" />
+          <NavigationProperty Name="Qualification" Relationship="Model.FK__Sotrudnic__ID_Qu__2EDAF651" FromRole="Sotrudnic" ToRole="Qualification" />
         </EntityType>
         <EntityType Name="Work">
           <Key>
             <PropertyRef Name="ID_Work" />
           </Key>
           <Property Name="ID_Work" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name_work" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type_work" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Work" FromRole="Work" ToRole="Order" />
+          <Property Name="Name_work" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order__ID_Work__339FAB6E" FromRole="Work" ToRole="Order" />
         </EntityType>
-        <Association Name="FK_Order_Accessories">
-          <End Role="Accessories" Type="Self.Accessories" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK__Order_Acc__ID_Ac__40058253">
+          <End Type="Model.Accessory" Role="Accessory" Multiplicity="1" />
+          <End Type="Model.Order_Accessory" Role="Order_Accessory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Accessories">
-              <PropertyRef Name="ID_Accessories" />
+            <Principal Role="Accessory">
+              <PropertyRef Name="ID_Accessory" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ID_Accessories" />
+            <Dependent Role="Order_Accessory">
+              <PropertyRef Name="ID_Accessory" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Basic_material">
-          <End Role="Basic_material" Type="Self.Basic_material" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Basic_material">
-              <PropertyRef Name="ID_Basic_material" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ID_Basic_material" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_basic_material_Basic_material">
-          <End Role="Basic_material" Type="Self.Basic_material" Multiplicity="1" />
-          <End Role="Order_basic_material" Type="Self.Order_basic_material" Multiplicity="*" />
+        <Association Name="FK__Order_bas__ID_Ba__3864608B">
+          <End Type="Model.Basic_material" Role="Basic_material" Multiplicity="0..1" />
+          <End Type="Model.Order_basic_material" Role="Order_basic_material" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Basic_material">
               <PropertyRef Name="ID_Basic_material" />
@@ -672,9 +685,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Client_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+        <Association Name="FK__Client__ID_Role__1BC821DD">
+          <End Type="Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="Model.Client" Role="Client" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="ID_Role" />
@@ -684,9 +697,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK__Order__ID_Client__32AB8735">
+          <End Type="Model.Client" Role="Client" Multiplicity="1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
               <PropertyRef Name="ID_Client" />
@@ -696,9 +709,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Education">
-          <End Role="Education" Type="Self.Education" Multiplicity="1" />
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
+        <Association Name="FK__Sotrudnic__ID_Ed__2DE6D218">
+          <End Type="Model.Education" Role="Education" Multiplicity="1" />
+          <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Education">
               <PropertyRef Name="ID_Education" />
@@ -708,9 +721,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
+        <Association Name="FK__Sotrudnic__ID_Ge__2BFE89A6">
+          <End Type="Model.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="ID_Gender" />
@@ -720,57 +733,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Measurements">
-          <End Role="Measurements" Type="Self.Measurements" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK__Order_mea__ID_Me__3C34F16F">
+          <End Type="Model.Measurement" Role="Measurement" Multiplicity="1" />
+          <End Type="Model.Order_measurement" Role="Order_measurement" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Measurements">
-              <PropertyRef Name="ID_Measurements" />
+            <Principal Role="Measurement">
+              <PropertyRef Name="ID_Measurement" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ID_Measurements" />
+            <Dependent Role="Order_measurement">
+              <PropertyRef Name="ID_Measurement" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_measurements_Measurements">
-          <End Role="Measurements" Type="Self.Measurements" Multiplicity="1" />
-          <End Role="Order_measurements" Type="Self.Order_measurements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Measurements">
-              <PropertyRef Name="ID_Measurements" />
-            </Principal>
-            <Dependent Role="Order_measurements">
-              <PropertyRef Name="ID_Measurements" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_basic_material_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="Order_basic_material" Type="Self.Order_basic_material" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID_Order" />
-            </Principal>
-            <Dependent Role="Order_basic_material">
-              <PropertyRef Name="ID_Order" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_measurements_Order_measurements">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="Order_measurements" Type="Self.Order_measurements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID_Order" />
-            </Principal>
-            <Dependent Role="Order_measurements">
-              <PropertyRef Name="ID_Order" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Sotrudnic">
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK__Order__ID_Sotrud__3493CFA7">
+          <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="0..1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sotrudnic">
               <PropertyRef Name="ID_Sotrudnic" />
@@ -780,9 +757,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Work">
-          <End Role="Work" Type="Self.Work" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK__Order__ID_Work__339FAB6E">
+          <End Type="Model.Work" Role="Work" Multiplicity="1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Work">
               <PropertyRef Name="ID_Work" />
@@ -792,9 +769,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Passport">
-          <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
+        <Association Name="FK__Order_Acc__ID_Or__3F115E1A">
+          <End Type="Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="Model.Order_Accessory" Role="Order_Accessory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Order_Accessory">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_bas__ID_Or__37703C52">
+          <End Type="Model.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="Model.Order_basic_material" Role="Order_basic_material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Order_basic_material">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_mea__ID_Or__3B40CD36">
+          <End Type="Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="Model.Order_measurement" Role="Order_measurement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Order_measurement">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__ID_Pa__2CF2ADDF">
+          <End Type="Model.Passport" Role="Passport" Multiplicity="0..1" />
+          <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Passport">
               <PropertyRef Name="ID_Passport" />
@@ -804,9 +817,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Post">
-          <End Role="Post" Type="Self.Post" Multiplicity="1" />
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
+        <Association Name="FK__Sotrudnic__ID_Po__2FCF1A8A">
+          <End Type="Model.Post" Role="Post" Multiplicity="1" />
+          <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Post">
               <PropertyRef Name="ID_Post" />
@@ -816,9 +829,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sotrudnic_Qualification">
-          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
-          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="*" />
+        <Association Name="FK__Sotrudnic__ID_Qu__2EDAF651">
+          <End Type="Model.Qualification" Role="Qualification" Multiplicity="1" />
+          <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Qualification">
               <PropertyRef Name="ID_Qualification" />
@@ -828,267 +841,168 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Accessories" EntityType="Self.Accessories" />
-          <EntitySet Name="Basic_material" EntityType="Self.Basic_material" />
-          <EntitySet Name="Client" EntityType="Self.Client" />
-          <EntitySet Name="Education" EntityType="Self.Education" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Measurements" EntityType="Self.Measurements" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="Order_basic_material" EntityType="Self.Order_basic_material" />
-          <EntitySet Name="Order_measurements" EntityType="Self.Order_measurements" />
-          <EntitySet Name="Passport" EntityType="Self.Passport" />
-          <EntitySet Name="Post" EntityType="Self.Post" />
-          <EntitySet Name="Qualification" EntityType="Self.Qualification" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Work" EntityType="Self.Work" />
-          <AssociationSet Name="FK_Order_Accessories" Association="Self.FK_Order_Accessories">
-            <End Role="Accessories" EntitySet="Accessories" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Basic_material" Association="Self.FK_Order_Basic_material">
-            <End Role="Basic_material" EntitySet="Basic_material" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_basic_material_Basic_material" Association="Self.FK_Order_basic_material_Basic_material">
-            <End Role="Basic_material" EntitySet="Basic_material" />
-            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Client_Role" Association="Self.FK_Client_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Client" EntitySet="Client" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Education" Association="Self.FK_Sotrudnic_Education">
-            <End Role="Education" EntitySet="Education" />
-            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Gender" Association="Self.FK_Sotrudnic_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Measurements" Association="Self.FK_Order_Measurements">
-            <End Role="Measurements" EntitySet="Measurements" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_measurements_Measurements" Association="Self.FK_Order_measurements_Measurements">
-            <End Role="Measurements" EntitySet="Measurements" />
-            <End Role="Order_measurements" EntitySet="Order_measurements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_basic_material_Order" Association="Self.FK_Order_basic_material_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Order_basic_material" EntitySet="Order_basic_material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_measurements_Order_measurements" Association="Self.FK_Order_measurements_Order_measurements">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Order_measurements" EntitySet="Order_measurements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Sotrudnic" Association="Self.FK_Order_Sotrudnic">
-            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Work" Association="Self.FK_Order_Work">
-            <End Role="Work" EntitySet="Work" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Passport" Association="Self.FK_Sotrudnic_Passport">
-            <End Role="Passport" EntitySet="Passport" />
-            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Post" Association="Self.FK_Sotrudnic_Post">
-            <End Role="Post" EntitySet="Post" />
-            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sotrudnic_Qualification" Association="Self.FK_Sotrudnic_Qualification">
-            <End Role="Qualification" EntitySet="Qualification" />
-            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Accessories">
-            <EntityTypeMapping TypeName="Model.Accessories">
-              <MappingFragment StoreEntitySet="Accessories">
-                <ScalarProperty Name="ID_Accessories" ColumnName="ID_Accessories" />
-                <ScalarProperty Name="Name_accessories" ColumnName="Name_accessories" />
-                <ScalarProperty Name="Cost_accessories" ColumnName="Cost_accessories" />
+          <EntitySetMapping Name="Accessory">
+            <EntityTypeMapping TypeName="Model.Accessory">
+              <MappingFragment StoreEntitySet="Accessory">
+                <ScalarProperty Name="Cost_accessory" ColumnName="Cost_accessory" />
+                <ScalarProperty Name="Name_accessory" ColumnName="Name_accessory" />
+                <ScalarProperty Name="ID_Accessory" ColumnName="ID_Accessory" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Basic_material">
             <EntityTypeMapping TypeName="Model.Basic_material">
               <MappingFragment StoreEntitySet="Basic_material">
-                <ScalarProperty Name="ID_Basic_material" ColumnName="ID_Basic_material" />
-                <ScalarProperty Name="Name_basic_material" ColumnName="Name_basic_material" />
                 <ScalarProperty Name="Cost_basic_material" ColumnName="Cost_basic_material" />
+                <ScalarProperty Name="Name_basic_material" ColumnName="Name_basic_material" />
+                <ScalarProperty Name="ID_Basic_material" ColumnName="ID_Basic_material" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="Model.Client">
               <MappingFragment StoreEntitySet="Client">
-                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Surname_Client" ColumnName="Surname_Client" />
-                <ScalarProperty Name="Firstname_Client" ColumnName="Firstname_Client" />
-                <ScalarProperty Name="Patronymic_Client" ColumnName="Patronymic_Client" />
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
-                <ScalarProperty Name="Mobile_phone" ColumnName="Mobile_phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile_phone" ColumnName="Mobile_phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Patronymic_Client" ColumnName="Patronymic_Client" />
+                <ScalarProperty Name="Firstname_Client" ColumnName="Firstname_Client" />
+                <ScalarProperty Name="Surname_Client" ColumnName="Surname_Client" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Education">
             <EntityTypeMapping TypeName="Model.Education">
               <MappingFragment StoreEntitySet="Education">
-                <ScalarProperty Name="ID_Education" ColumnName="ID_Education" />
                 <ScalarProperty Name="Education_level" ColumnName="Education_level" />
+                <ScalarProperty Name="ID_Education" ColumnName="ID_Education" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="Model.Gender">
               <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
                 <ScalarProperty Name="Gender1" ColumnName="Gender" />
+                <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Measurements">
-            <EntityTypeMapping TypeName="Model.Measurements">
-              <MappingFragment StoreEntitySet="Measurements">
-                <ScalarProperty Name="ID_Measurements" ColumnName="ID_Measurements" />
-                <ScalarProperty Name="Bust" ColumnName="Bust" />
-                <ScalarProperty Name="Waist_circumference" ColumnName="Waist_circumference" />
-                <ScalarProperty Name="Hip_girth" ColumnName="Hip_girth" />
-                <ScalarProperty Name="Neck_girth" ColumnName="Neck_girth" />
-                <ScalarProperty Name="Сhest_width" ColumnName="Сhest_width" />
-                <ScalarProperty Name="Back_width" ColumnName="Back_width" />
-                <ScalarProperty Name="Arm_circumference" ColumnName="Arm_circumference" />
-                <ScalarProperty Name="Wrist_girth" ColumnName="Wrist_girth" />
-                <ScalarProperty Name="Knee_girth" ColumnName="Knee_girth" />
-                <ScalarProperty Name="Foot_size" ColumnName="Foot_size" />
-                <ScalarProperty Name="Growth" ColumnName="Growth" />
+          <EntitySetMapping Name="Measurement">
+            <EntityTypeMapping TypeName="Model.Measurement">
+              <MappingFragment StoreEntitySet="Measurement">
+                <ScalarProperty Name="Name_measurement" ColumnName="Name_measurement" />
+                <ScalarProperty Name="ID_Measurement" ColumnName="ID_Measurement" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="Model.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
-                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
-                <ScalarProperty Name="Date_start" ColumnName="Date_start" />
-                <ScalarProperty Name="Date_finish" ColumnName="Date_finish" />
-                <ScalarProperty Name="Urgently" ColumnName="Urgently" />
-                <ScalarProperty Name="ID_Work" ColumnName="ID_Work" />
                 <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
-                <ScalarProperty Name="ID_Measurements" ColumnName="ID_Measurements" />
-                <ScalarProperty Name="ID_Basic_material" ColumnName="ID_Basic_material" />
-                <ScalarProperty Name="Quantity_basic_material" ColumnName="Quantity_basic_material" />
-                <ScalarProperty Name="ID_Accessories" ColumnName="ID_Accessories" />
-                <ScalarProperty Name="Quantity_accessories" ColumnName="Quantity_accessories" />
+                <ScalarProperty Name="ID_Work" ColumnName="ID_Work" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Accessory">
+            <EntityTypeMapping TypeName="Model.Order_Accessory">
+              <MappingFragment StoreEntitySet="Order_Accessory">
+                <ScalarProperty Name="ID_Accessory" ColumnName="ID_Accessory" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Order_accessory" ColumnName="ID_Order_accessory" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order_basic_material">
             <EntityTypeMapping TypeName="Model.Order_basic_material">
               <MappingFragment StoreEntitySet="Order_basic_material">
-                <ScalarProperty Name="ID_Order_basic_material" ColumnName="ID_Order_basic_material" />
-                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="Quantity_Basic_material" ColumnName="Quantity_Basic_material" />
                 <ScalarProperty Name="ID_Basic_material" ColumnName="ID_Basic_material" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Order_material" ColumnName="ID_Order_material" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order_measurements">
-            <EntityTypeMapping TypeName="Model.Order_measurements">
-              <MappingFragment StoreEntitySet="Order_measurements">
-                <ScalarProperty Name="ID_Order_measurements" ColumnName="ID_Order_measurements" />
+          <EntitySetMapping Name="Order_measurement">
+            <EntityTypeMapping TypeName="Model.Order_measurement">
+              <MappingFragment StoreEntitySet="Order_measurement">
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ID_Measurement" ColumnName="ID_Measurement" />
                 <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
-                <ScalarProperty Name="ID_Measurements" ColumnName="ID_Measurements" />
+                <ScalarProperty Name="ID_Order_measurement" ColumnName="ID_Order_measurement" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Passport">
             <EntityTypeMapping TypeName="Model.Passport">
               <MappingFragment StoreEntitySet="Passport">
-                <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
-                <ScalarProperty Name="Series_number" ColumnName="Series_number" />
-                <ScalarProperty Name="Issued_by_whom" ColumnName="Issued_by_whom" />
-                <ScalarProperty Name="Date_of_issue" ColumnName="Date_of_issue" />
                 <ScalarProperty Name="Division_code" ColumnName="Division_code" />
+                <ScalarProperty Name="Date_of_issue" ColumnName="Date_of_issue" />
+                <ScalarProperty Name="Issued_by_whom" ColumnName="Issued_by_whom" />
+                <ScalarProperty Name="Series_number" ColumnName="Series_number" />
+                <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="Model.Post">
               <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
                 <ScalarProperty Name="Post1" ColumnName="Post" />
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Qualification">
             <EntityTypeMapping TypeName="Model.Qualification">
               <MappingFragment StoreEntitySet="Qualification">
-                <ScalarProperty Name="ID_Qualification" ColumnName="ID_Qualification" />
                 <ScalarProperty Name="Qualification_level" ColumnName="Qualification_level" />
+                <ScalarProperty Name="ID_Qualification" ColumnName="ID_Qualification" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="Model.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
                 <ScalarProperty Name="Role1" ColumnName="Role" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sotrudnic">
             <EntityTypeMapping TypeName="Model.Sotrudnic">
               <MappingFragment StoreEntitySet="Sotrudnic">
-                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
-                <ScalarProperty Name="Surname_sotrudnic" ColumnName="Surname_sotrudnic" />
-                <ScalarProperty Name="Firstname_sotrudnic" ColumnName="Firstname_sotrudnic" />
-                <ScalarProperty Name="Patronymic_sotrudnic" ColumnName="Patronymic_sotrudnic" />
-                <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
-                <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-                <ScalarProperty Name="SNILS" ColumnName="SNILS" />
-                <ScalarProperty Name="ID_Education" ColumnName="ID_Education" />
-                <ScalarProperty Name="ID_Qualification" ColumnName="ID_Qualification" />
-                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="Mobile_Phone" ColumnName="Mobile_Phone" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
-                <ScalarProperty Name="Mobile_phone" ColumnName="Mobile_phone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="Model.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="ID_polzovatel" ColumnName="ID_polzovatel" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="ID_Qualification" ColumnName="ID_Qualification" />
+                <ScalarProperty Name="ID_Education" ColumnName="ID_Education" />
+                <ScalarProperty Name="SNILS" ColumnName="SNILS" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="ID_Passport" ColumnName="ID_Passport" />
+                <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
+                <ScalarProperty Name="Patronymic_sotrudnic" ColumnName="Patronymic_sotrudnic" />
+                <ScalarProperty Name="Firstname_sotrudnic" ColumnName="Firstname_sotrudnic" />
+                <ScalarProperty Name="Surname_sotrudnic" ColumnName="Surname_sotrudnic" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Work">
             <EntityTypeMapping TypeName="Model.Work">
               <MappingFragment StoreEntitySet="Work">
-                <ScalarProperty Name="ID_Work" ColumnName="ID_Work" />
                 <ScalarProperty Name="Name_work" ColumnName="Name_work" />
-                <ScalarProperty Name="Type_work" ColumnName="Type_work" />
+                <ScalarProperty Name="ID_Work" ColumnName="ID_Work" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
