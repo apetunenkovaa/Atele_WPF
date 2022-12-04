@@ -18,6 +18,7 @@ namespace Atele_WPF
         public Client()
         {
             this.Order = new HashSet<Order>();
+            this.Client_photo = new HashSet<Client_photo>();
         }
     
         public int ID_Client { get; set; }
@@ -34,5 +35,7 @@ namespace Atele_WPF
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Client_photo> Client_photo { get; set; }
     }
 }

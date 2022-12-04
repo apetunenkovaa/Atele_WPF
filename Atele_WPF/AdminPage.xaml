@@ -11,7 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Style="{StaticResource tb}">Меню администратора</TextBlock>
 
@@ -21,11 +21,14 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Button Content="Список пользователей" Grid.Row="0" Name="showUsersBtn" Click="showUsersBtn_Click"/>
-            <Button Content="Список заказов" Grid.Row="1" Name="showOrderBtn" Click="showOrderBtn_Click"/>
-            <Button Content="Оформить заказ" Grid.Row="2" Name="addNewOrder" Click="addNewOrder_Click"/>
+            <Button Content="Список пользователей" Template="{StaticResource b_big_btn}" Grid.Row="0" Name="showUsersBtn" Click="showUsersBtn_Click"  Grid.RowSpan="2"/>
+            <Button Content="Список заказов" Template="{StaticResource b_big_btn}" Grid.Row="1" Name="showOrderBtn" Click="showOrderBtn_Click" Grid.RowSpan="2"/>
+            <Button Content="Перейти в личный кабинет" Template="{StaticResource b_big_btn}" Grid.Row="2"  Name="goToPersonalPage" Click="goToPersonalPage_Click" Grid.RowSpan="2"/>
+            <Button Content="Оформить заказ" Template="{StaticResource b_big_btn}" Grid.Row="3" Name="addNewOrder" Click="addNewOrder_Click"  Grid.RowSpan="2"/>
+            
         </Grid>
     </Grid>
 </Page>

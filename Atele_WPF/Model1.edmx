@@ -36,6 +36,15 @@
           <Property Name="Password" Type="int" Nullable="false" />
           <Property Name="ID_Role" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Client_photo">
+          <Key>
+            <PropertyRef Name="ID_Photo" />
+          </Key>
+          <Property Name="ID_Photo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Client" Type="int" Nullable="false" />
+          <Property Name="Photo_binary" Type="varbinary(max)" />
+          <Property Name="Photo_path" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="ID_Education" />
@@ -328,10 +337,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Client_photo_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_photo" Type="Self.Client_photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Client_photo">
+              <PropertyRef Name="ID_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Accessory" EntityType="Self.Accessory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Basic_material" EntityType="Self.Basic_material" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_photo" EntityType="Self.Client_photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Measurement" EntityType="Self.Measurement" Schema="dbo" store:Type="Tables" />
@@ -405,6 +427,10 @@
             <End Role="Qualification" EntitySet="Qualification" />
             <End Role="Sotrudnic" EntitySet="Sotrudnic" />
           </AssociationSet>
+          <AssociationSet Name="FK_Client_photo_Client" Association="Self.FK_Client_photo_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client_photo" EntitySet="Client_photo" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -414,6 +440,7 @@
           <EntitySet Name="Accessory" EntityType="Model.Accessory" />
           <EntitySet Name="Basic_material" EntityType="Model.Basic_material" />
           <EntitySet Name="Client" EntityType="Model.Client" />
+          <EntitySet Name="Client_photo" EntityType="Model.Client_photo" />
           <EntitySet Name="Education" EntityType="Model.Education" />
           <EntitySet Name="Gender" EntityType="Model.Gender" />
           <EntitySet Name="Measurement" EntityType="Model.Measurement" />
@@ -442,6 +469,10 @@
           <AssociationSet Name="FK__Order__ID_Client__32AB8735" Association="Model.FK__Order__ID_Client__32AB8735">
             <End Role="Client" EntitySet="Client" />
             <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_photo_Client" Association="Model.FK_Client_photo_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client_photo" EntitySet="Client_photo" />
           </AssociationSet>
           <AssociationSet Name="FK__Sotrudnic__ID_Ed__2DE6D218" Association="Model.FK__Sotrudnic__ID_Ed__2DE6D218">
             <End Role="Education" EntitySet="Education" />
@@ -522,6 +553,17 @@
           <Property Name="ID_Role" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="Model.FK__Client__ID_Role__1BC821DD" FromRole="Client" ToRole="Role" />
           <NavigationProperty Name="Order" Relationship="Model.FK__Order__ID_Client__32AB8735" FromRole="Client" ToRole="Order" />
+          <NavigationProperty Name="Client_photo" Relationship="Model.FK_Client_photo_Client" FromRole="Client" ToRole="Client_photo" />
+        </EntityType>
+        <EntityType Name="Client_photo">
+          <Key>
+            <PropertyRef Name="ID_Photo" />
+          </Key>
+          <Property Name="ID_Photo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Client" Type="Int32" Nullable="false" />
+          <Property Name="Photo_binary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Photo_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Model.FK_Client_photo_Client" FromRole="Client_photo" ToRole="Client" />
         </EntityType>
         <EntityType Name="Education">
           <Key>
@@ -709,6 +751,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Client_photo_Client">
+          <End Type="Model.Client" Role="Client" Multiplicity="1" />
+          <End Type="Model.Client_photo" Role="Client_photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Client_photo">
+              <PropertyRef Name="ID_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Sotrudnic__ID_Ed__2DE6D218">
           <End Type="Model.Education" Role="Education" Multiplicity="1" />
           <End Type="Model.Sotrudnic" Role="Sotrudnic" Multiplicity="*" />
@@ -841,7 +895,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -878,6 +932,16 @@
                 <ScalarProperty Name="Firstname_Client" ColumnName="Firstname_Client" />
                 <ScalarProperty Name="Surname_Client" ColumnName="Surname_Client" />
                 <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_photo">
+            <EntityTypeMapping TypeName="Model.Client_photo">
+              <MappingFragment StoreEntitySet="Client_photo">
+                <ScalarProperty Name="Photo_path" ColumnName="Photo_path" />
+                <ScalarProperty Name="Photo_binary" ColumnName="Photo_binary" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="ID_Photo" ColumnName="ID_Photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

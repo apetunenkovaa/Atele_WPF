@@ -21,6 +21,7 @@ namespace Atele_WPF
     /// </summary>
     public partial class ShowOrders : Page
     {
+        Client client;
         public ShowOrders()
         {
             InitializeComponent();
@@ -171,7 +172,7 @@ namespace Atele_WPF
 
         private void backBTN_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AdminPage());
+            FrameClass.MainFrame.Navigate(new AdminPage(client));
         }
     }
 }

@@ -82,5 +82,15 @@ namespace Atele_WPF
             client = DataBase.tBE.Client.ToList();
             usersDG.ItemsSource = client;
         }
+
+        private void back_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (FrameClass.MainFrame.CanGoBack)
+            {
+                FrameClass.MainFrame.GoBack();
+            }
+        }
     }
+
+   
 }

@@ -23,6 +23,7 @@ namespace Atele_WPF
     public partial class orders : Page
     {
         bool flagUpdate;
+        Client client;
 
         void uploadFields()
         {
@@ -236,7 +237,7 @@ namespace Atele_WPF
 
                     DataBase.tBE.SaveChanges();
                     MessageBox.Show("Данные добавлены");
-                    FrameClass.MainFrame.Navigate(new AdminPage());
+                    FrameClass.MainFrame.Navigate(new AdminPage(client));
                 }
             }
             catch(Exception ex)

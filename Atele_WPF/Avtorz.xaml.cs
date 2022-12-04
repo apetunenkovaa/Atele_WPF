@@ -47,10 +47,10 @@ namespace Atele_WPF
                     switch (client.ID_Role)
                     {
                         case 1:
-                            FrameClass.MainFrame.Navigate(new AdminPage());
+                            FrameClass.MainFrame.Navigate(new AdminPage(client));
                             break;
                         case 2:
-                            FrameClass.MainFrame.Navigate(new PersonalPage());
+                            FrameClass.MainFrame.Navigate(new PersonalPage(client));
                             break;
                         default:
                             MessageBox.Show("Пока");

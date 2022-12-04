@@ -25,23 +25,24 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <TextBlock Text="Клиент"/>
-                <ComboBox Name="clientsCB"/>
+                
+                <TextBlock Style="{StaticResource l_tb}" Text="Клиент"/>
+                <ComboBox  Style="{StaticResource cb}" Name="clientsCB"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
-                <TextBlock Text="Тип работ"/>
-                <ComboBox Name="workCB"/>
+                <TextBlock Style="{StaticResource l_tb}" Text="Тип работ"/>
+                <ComboBox Style="{StaticResource cb}" Name="workCB"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2">
-                <TextBlock Text="Сотрудник"/>
-                <ComboBox Name="sotrudnicCB"/>
+                <TextBlock Style="{StaticResource l_tb}" Text="Сотрудник"/>
+                <ComboBox Style="{StaticResource cb}" Name="sotrudnicCB"/>
             </StackPanel>
 
         </Grid>
 
-        <ListView Grid.Row="1" SelectionMode="Multiple" Name="measurementsLV">
+        <ListView Grid.Row="1" SelectionMode="Multiple" Name="measurementsLV" Style="{StaticResource listview}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel/>
@@ -57,7 +58,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView Grid.Row="2" SelectionMode="Multiple" Name="basic_materialsLV">
+        <ListView Grid.Row="2" SelectionMode="Multiple" Name="basic_materialsLV" Style="{StaticResource listview}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel/>
@@ -67,13 +68,13 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Name_basic_material}"/>
-                        <TextBox Width="30" Text="{Binding BM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 0"/>
+                        <TextBox Text="{Binding BM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView Grid.Row="3" SelectionMode="Multiple" Name="accesoriesLV">
+        <ListView Grid.Row="3" SelectionMode="Multiple" Name="accesoriesLV" Style="{StaticResource listview}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel/>
@@ -89,8 +90,8 @@
         </ListView>
 
         <StackPanel Grid.Row="4" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button  Name="backBTN" Click="backBTN_Click" Content="Назад" Width="100" Margin="0 0 10 0" Height="25"/>
-            <Button  Name="addBTN" Click="addBTN_Click" Width="100" Height="25"/>
+            <Button  Name="backBTN" Click="backBTN_Click" Template="{StaticResource lit_btn}" Content="Назад" />
+            <Button  Name="addBTN" Click="addBTN_Click" Template="{StaticResource lit_btn}" Content="Добавить" />
         </StackPanel>
     </Grid>
 </Page>

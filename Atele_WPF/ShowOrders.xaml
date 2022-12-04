@@ -23,21 +23,21 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
-                        <StackPanel>
-                            <TextBlock Uid="{Binding ID_Order}" Name="orderIdTB" Loaded="orderIdTB_Loaded"/>
-                            <TextBlock Uid="{Binding ID_Order}" Name="clientNameTB" Loaded="clientNameTB_Loaded"/>
-                            <TextBlock Uid="{Binding ID_Order}" Text="{Binding Work.Name_work, StringFormat=Тип работ: {0}}"/>
-                            <TextBlock Uid="{Binding ID_Order}" Name="sotrudnicNameTB" Loaded="sotrudnicNameTB_Loaded"/>
-                            <TextBlock Uid="{Binding ID_Order}" Name="AccesoriesTB" Loaded="AccesoriesTB_Loaded" TextWrapping="Wrap"/>
-                            <TextBlock Uid="{Binding ID_Order}" Name="materialsTB" Loaded="materialsTB_Loaded" TextWrapping="Wrap"/>
-                            <TextBlock Uid="{Binding ID_Order}" Name="measurementsTB" Loaded="measurementsTB_Loaded" TextWrapping="Wrap"/>
-                            <Button Uid="{Binding ID_Order}" Content="Изменить" Click="updateBTN_Click" Name="updateBTN"/>
-                            <Button Uid="{Binding ID_Order}" Content="Удалить" Name="deleteBTN" Click="deleteBTN_Click"/>
+                        <StackPanel Background="#a3cef1" HorizontalAlignment="Center" >
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Name="orderIdTB" Loaded="orderIdTB_Loaded"/>
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Name="clientNameTB" Loaded="clientNameTB_Loaded"/>
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Text="{Binding Work.Name_work, StringFormat=Тип работ: {0}}"/>
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Name="sotrudnicNameTB" Loaded="sotrudnicNameTB_Loaded"/>
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Name="AccesoriesTB" Loaded="AccesoriesTB_Loaded" TextWrapping="Wrap"/>
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Name="materialsTB" Loaded="materialsTB_Loaded" TextWrapping="Wrap"/>
+                            <TextBlock Uid="{Binding ID_Order}" Style="{StaticResource text_list}" Name="measurementsTB" Loaded="measurementsTB_Loaded" TextWrapping="Wrap"/>
+                            <Button Uid="{Binding ID_Order}" Content="Изменить" Click="updateBTN_Click" Name="updateBTN" Template="{StaticResource lit_btn}"/>
+                            <Button Uid="{Binding ID_Order}" Content="Удалить" Name="deleteBTN" Click="deleteBTN_Click" Template="{StaticResource lit_btn}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Назад" Grid.Row="1" Name="backBTN" Click="backBTN_Click" Width="100" Height="25" HorizontalAlignment="Right"/>
+        <Button Content="Назад" Grid.Row="1" Name="backBTN" Template="{StaticResource lit_btn}" Click="backBTN_Click"  HorizontalAlignment="Right"/>
     </Grid>
 </Page>

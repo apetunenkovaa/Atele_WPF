@@ -28,6 +28,7 @@ namespace Atele_WPF
         public virtual DbSet<Accessory> Accessory { get; set; }
         public virtual DbSet<Basic_material> Basic_material { get; set; }
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Client_photo> Client_photo { get; set; }
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Measurement> Measurement { get; set; }

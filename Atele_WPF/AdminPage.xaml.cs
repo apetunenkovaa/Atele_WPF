@@ -20,11 +20,14 @@ namespace Atele_WPF
     /// </summary>
     public partial class AdminPage : Page
     {
-        public AdminPage()
+        Client client;
+        public AdminPage(Client client)
         {
             InitializeComponent();
+            this.client = client;
         }
 
+       
         private void showUsersBtn_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new ShowUsers());
@@ -38,6 +41,11 @@ namespace Atele_WPF
         private void showOrderBtn_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new ShowOrders());
+        }
+
+        private void goToPersonalPage_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new PersonalPage(client));
         }
     }
 }

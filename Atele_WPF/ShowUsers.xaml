@@ -9,6 +9,11 @@
       Title="ShowUsers">
 
     <Grid>
+
+        
+           
+            
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -17,32 +22,39 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <GroupBox Header="Сортировка">
+            <Grid>
+                <Button Name="btnBack" Template="{StaticResource btn_Back}" Click="back_Btn_Click" HorizontalAlignment="Right">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Res/back.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <GroupBox Style="{StaticResource gropbox}" Header="Сортировка">
                 <ComboBox SelectionChanged="ComboBox_SelectionChanged" Name="sortCB">
                     <ComboBoxItem Content="По возрастанию"/>
                     <ComboBoxItem Content="По убыванию"/>
                 </ComboBox>
             </GroupBox>
+            </Grid>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <GroupBox Header="Поиск">
+            <GroupBox Style="{StaticResource gropbox}" Header="Поиск">
                 <StackPanel>
                     <ComboBox SelectionChanged="fieldCB_SelectionChanged" Name="fieldCB">
                         <ComboBoxItem Content="Имя"/>
                         <ComboBoxItem Content="Логин"/>
                     </ComboBox>
-                    <TextBox Name="searchTB" TextChanged="searchTB_TextChanged"/>
+                    <TextBox Name="searchTB" TextChanged="searchTB_TextChanged" Style="{StaticResource text_b}" />
                 </StackPanel>
             </GroupBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Button Content="Сбросить и перейти к исходной таблице" Name="clearBtn" Click="clearBtn_Click" Width="270"/>
+            <Button Content="Сбросить и перейти к исходной" Name="clearBtn" Click="clearBtn_Click" Template="{StaticResource butn_sbros}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3">
-            <DataGrid Name="usersDG" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Center">
+            <DataGrid Name="usersDG" Style="{StaticResource data}" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Center">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding ID_Client}"/>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname_Client}"/>
