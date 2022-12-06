@@ -10,8 +10,13 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Style="{StaticResource tb}" HorizontalAlignment="Center" Name ="tb_Admin">Главное меню</TextBlock>
-        
+            <TextBlock Style="{StaticResource tb}" HorizontalAlignment="Center" Name ="tb_Admin">Лучшее ателье в городе!</TextBlock>
+            <Image Height="300" Width="360" Source="Res/reclama.jpg" Margin="0,20,0,0"/>
+            <Button x:Name="btnp1" Template="{StaticResource pug}" >
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Res/pug.png"/>
+                </Button.OpacityMask>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>
