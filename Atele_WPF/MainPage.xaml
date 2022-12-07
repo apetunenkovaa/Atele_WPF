@@ -10,13 +10,21 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Style="{StaticResource tb}" HorizontalAlignment="Center" Name ="tb_Admin">Лучшее ателье в городе!</TextBlock>
-            <Image Height="300" Width="360" Source="Res/reclama.jpg" Margin="0,20,0,0"/>
-            <Button x:Name="btnp1" Template="{StaticResource pug}" >
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="Res/pug.png"/>
-                </Button.OpacityMask>
-            </Button>
+            <TextBlock Style="{StaticResource tb}" HorizontalAlignment="Center" Name ="tb_text">Лучшее ателье в городе!</TextBlock>
+            <Grid>
+                <Button x:Name="btnp1" Template="{StaticResource pug}" HorizontalAlignment="Left" Margin="40,0,0,0">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="Res/pug.png"/>
+                    </Button.OpacityMask>
+                </Button>
+                <Button x:Name="btnp2" Template="{StaticResource pug}" HorizontalAlignment="Right" Margin="0,0,40,0" >
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="Res/pug.png"/>
+                    </Button.OpacityMask>
+                </Button>
+            </Grid>
+            <Image Name ="Photo" Height="200" Width="240" Source="Res/logo.png" Margin="0,0,0,0"/>
+            
         </StackPanel>
     </Grid>
 </Page>

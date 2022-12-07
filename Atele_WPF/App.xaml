@@ -203,16 +203,14 @@
         </Style>
 
         <ControlTemplate TargetType="Button" x:Key="pug">
-            <Border Width="50" Height="50" 
+            <Border Width="35" Height="35" 
                     Background="Black"                   
-                    BorderThickness="1"
-                    CornerRadius="20"
+                    
                     Margin="0,0,0,0"
                     >
                 <ContentControl 
                      Content="{TemplateBinding Content}" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center"
+                    
                     />
             </Border>
         </ControlTemplate>

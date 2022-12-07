@@ -263,11 +263,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Res\pug4.png" />
-    <Resource Include="Res\pug3.png" />
-    <Resource Include="Res\pug2.png" />
     <Resource Include="Res\pug.png" />
-    <Resource Include="Res\reclama.jpg" />
     <Resource Include="Res\noimage.jpg" />
     <Resource Include="Res\back.png" />
   </ItemGroup>
