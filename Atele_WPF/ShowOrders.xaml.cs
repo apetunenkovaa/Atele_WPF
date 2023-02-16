@@ -22,10 +22,16 @@ namespace Atele_WPF
     public partial class ShowOrders : Page
     {
         Client client;
+        Pagin pc = new Pagin();
+        List<Order> orders = new List<Order>();
         public ShowOrders()
         {
             InitializeComponent();
-            ordersLV.ItemsSource = DataBase.tBE.Order.ToList();
+            orders = DataBase.tBE.Order.ToList();
+            ordersLV.ItemsSource = orders;
+            pc.CountPage = orders.Count;
+            DataContext = pc;
+
         }
 
         private void clientNameTB_Loaded(object sender, RoutedEventArgs e)
@@ -173,6 +179,64 @@ namespace Atele_WPF
         private void backBTN_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new AdminPage(client));
+        }
+
+        private void txtPageCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                pc.CountPage = Convert.ToInt32(txtPageCount.Text); // если в текстовом поле есnь значение, присваиваем его свойству объекта, которое хранит количество записей на странице
+            }
+            catch
+            {
+                pc.CountPage = orders.Count; // если в текстовом поле значения нет, присваиваем свойству объекта, которое хранит количество записей на странице количество элементов в списке
+            }
+            pc.Countlist = orders.Count;  // присваиваем новое значение свойству, которое в объекте отвечает за общее количество записей
+            ordersLV.ItemsSource = orders.Skip(0).Take(pc.CountPage).ToList();  // отображаем первые записи в том количестве, которое равно CountPage
+            pc.CurrentPage = 1; // текущая страница - это страница 1
+        }
+
+        private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)  // обработка нажатия на один из Textblock в меню с номерами страниц
+        {
+            TextBlock tb = (TextBlock)sender;
+
+            switch (tb.Uid)  // определяем, куда конкретно было сделано нажатие
+            {
+                case "prev":
+                    pc.CurrentPage--;
+                    break;
+                case "next":
+                    pc.CurrentPage++;
+                    break;
+                default:
+                    pc.CurrentPage = Convert.ToInt32(tb.Text);
+                    break;
+                case "firstOne":
+                    pc.CurrentPage = 1;
+                    break;
+                case "lastOne":
+                    pc.CurrentPage = pc.CountPages;
+                    break;
+            }
+            ordersLV.ItemsSource = orders.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();  // оображение записей постранично с определенным количеством на каждой странице
+            // Skip(pc.CurrentPage* pc.CountPage - pc.CountPage) - сколько пропускаем записей
+            // Take(pc.CountPage) - сколько записей отображаем на странице
+        }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            pc.CurrentPage = 1;
+
+            try
+            {
+                pc.CountPage = Convert.ToInt32(txtPageCount.Text); // если в текстовом поле есnь значение, присваиваем его свойству объекта, которое хранит количество записей на странице
+            }
+            catch
+            {
+                pc.CountPage = orders.Count; // если в текстовом поле значения нет, присваиваем свойству объекта, которое хранит количество записей на странице количество элементов в списке
+            }
+            pc.Countlist = orders.Count;  // присваиваем новое значение свойству, которое в объекте отвечает за общее количество записей
+            ordersLV.ItemsSource = orders.Skip(0).Take(pc.CountPage).ToList();  // отображаем первые записи в том количестве, которое равно CountPage
         }
     }
 }

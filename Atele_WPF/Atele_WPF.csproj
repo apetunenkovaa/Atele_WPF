@@ -110,6 +110,7 @@
     <Compile Include="Order_measurement.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pagin.cs" />
     <Compile Include="PartialBasicMaterial.cs" />
     <Compile Include="PartialOrderMeasurement.cs" />
     <Compile Include="Passport.cs">

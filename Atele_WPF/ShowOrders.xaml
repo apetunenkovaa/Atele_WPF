@@ -9,12 +9,13 @@
       Title="ShowOrders">
 
     <Grid>
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <ListView Name="ordersLV" Grid.Row="0">
+        <ListView Name="ordersLV" Grid.Row="0"  Height="200">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel/>
@@ -38,6 +39,25 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Назад" Grid.Row="1" Name="backBTN" Template="{StaticResource lit_btn}" Click="backBTN_Click"  HorizontalAlignment="Right"/>
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1">
+            
+            <TextBlock Name="txtFirst" Uid="firstOne" Text="&lt;&lt;" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txtPrev" Uid="prev" Text=" &lt; " MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txt1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txt2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}" FontWeight="{Binding Bold[1]}" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txt3" Uid="3" Text="{Binding  Path = NPage[2]}" Visibility="{Binding Visible[2]}" FontWeight="{Binding Bold[2]}" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txt4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}" FontWeight="{Binding Bold[3]}" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txt5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}" FontWeight="{Binding Bold[4]}" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txtNext" Uid="next" Text=" &gt;" MouseDown="GoPage_MouseDown"/>
+            <TextBlock Name="txtLast" Uid="lastOne" Text="&gt;&gt;" MouseDown="GoPage_MouseDown" />
+            <StackPanel>
+                <Button Content="Назад" Grid.Row="2" Name="backBTN" Template="{StaticResource lit_btn}" Click="backBTN_Click"  HorizontalAlignment="Left"/>
+                <GroupBox Header="Введите количество записей на одной странице" Style="{StaticResource gropbox}">
+                    <TextBox Name="txtPageCount" TextChanged="txtPageCount_TextChanged"/>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        
     </Grid>
 </Page>
